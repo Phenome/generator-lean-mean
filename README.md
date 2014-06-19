@@ -29,7 +29,7 @@ OR
 * [Bootstrap](http://getbootstrap.com/), which doesn't need introduction;
 * [FontAwesome](http://fortawesome.github.io/Font-Awesome/), for even more icons;
 
-And ask if you'd like to include a top Navbar (currently only works in Metro UI, but can easily be ported to Bootstrap.
+And ask if you'd like to include a top Navbar (currently only works in Metro UI, but can easily be ported to Bootstrap).
 
 ### Setup
 To install generator-lean-mean from npm, run:
