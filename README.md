@@ -15,7 +15,7 @@ I ended up even preferring the "modular" code organization pattern ([link](https
 * [MongoDB](http://www.mongodb.org/), leading NoSQL database;
 * [Express](http://expressjs.com/), for backend routing;
 * [AngularJS](https://angularjs.org/), the Superheroic MVW framework for Javascript;
-* [Node](http://nodejs.org/), the backend engine using V8 Javascript engine;
+* [Node](http://nodejs.org/), the backend engine that runs on Javascript;
 
 #### Plus these, for personal preferences
 * [gulp](http://www.gulpjs.com) for building;
