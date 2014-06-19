@@ -1,4 +1,4 @@
-# generator-lean-mean [![Build Status](https://secure.travis-ci.org/phenome/generator-lean-mean.png?branch=master)](https://travis-ci.org/phenome/generator-lean-mean)
+# generator-lean-mean [![Build Status](https://travis-ci.org/Phenome/generator-lean-mean.svg?branch=master)](https://travis-ci.org/phenome/generator-lean-mean)
 
 > [Yeoman](http://yeoman.io) generator
 
