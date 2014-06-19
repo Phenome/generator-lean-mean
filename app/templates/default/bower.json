@@ -1,0 +1,17 @@
+{
+  "name": "<%= _.slugify(config.appName) %>",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular":"latest",
+    "angular-route":"latest",
+    "angular-sanitize":"latest",
+    "angular-animate":"latest",
+    "angular-cookies":"latest",
+    "angular-resource":"latest"<% if (config.css.indexOf('metroui') >= 0) { %>,
+    "jquery-ui":"latest",
+    "metro-ui-css":"latest"<% } if (config.css.indexOf('bootstrap') >= 0) { %>,
+    "bootstrap":"latest"<% } if (config.css.indexOf('fontawesome') >= 0) { %>,
+    "fontawesome":"latest"<% } %>
+  }
+}
+

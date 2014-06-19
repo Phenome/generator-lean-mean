@@ -1,0 +1,31 @@
+{
+  "name": "<%= _.slugify(config.appName) %>",
+  "version": "0.0.0",
+  "dependencies": {
+    "connect-livereload":"latest",
+    "lodash":"latest",
+    "express":"latest",
+    "static-favicon":"latest",
+    "cookie-parser":"latest",
+    "errorhandler":"latest",
+    "express-session":"latest",
+    "connect-mongo":"latest",
+    "jade":"latest",
+    "stylus":"latest",
+    "promised-mongo":"latest",
+    "coffee-script":"latest"
+  },
+  "devDependencies":{
+    "gulp":"latest",
+    "gulp-filter":"latest",
+    "gulp-uglify":"latest",
+    "gulp-inject":"latest",
+    "gulp-changed":"latest",
+    "gulp-livereload":"latest",
+    "gulp-util":"latest",
+    "gulp-coffee":"latest",
+    "gulp-stylus":"latest",
+    "nib":"latest",
+    "gulp-bower-files":"latest"
+  }
+}

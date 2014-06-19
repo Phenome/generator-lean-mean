@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title <%= _.capitalize(config.appName) %>
+    //---inject:css---
+    //---inject---
+  body<% if (config.css.indexOf('metroui') >= 0) { %>.metro<% } %>(ng-app="<%= config.appName %>App")
+    <% if (config.scaffolds.indexOf('navbar') >= 0) { %>
+    div(ng-include='\'modules/navbar\'')
+    <% } %>div(ng-view)
+    //---inject:js---
+    //---inject---
