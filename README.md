@@ -5,24 +5,30 @@
 
 ## Getting Started
 
-### What is Yeoman?
+### What is Generator Lean Mean?
 
-Trick question. It's not a thing. It's this guy:
+After using [generator-angular-fullstack](https://www.npmjs.org/package/generator-angular-fullstack), I searched for a generator that used [Stylus](http://learnboost.github.io/stylus/) and [gulp](http://www.gulpjs.com).
 
-![](http://i.imgur.com/JHaAlBJ.png)
+I ended up even preferring the "modular" code organization pattern ([link](https://medium.com/opinionated-angularjs/9f01b594bf06)). I moved some folders around and ended up with a clean generator that uses:
+#### The MEAN Stack
+* [MongoDB](http://www.mongodb.org/), leading NoSQL database;
+* [Express](http://expressjs.com/), for backend routing;
+* [AngularJS](https://angularjs.org/), the Superheroic MVW framework for Javascript;
+* [Node](http://nodejs.org/), the backend engine using V8 Javascript engine;
+#### Plus these, for personal preferences
+* [gulp](http://www.gulpjs.com) for building;
+* [Stylus](http://learnboost.github.io/stylus/), for styling;
+* [Coffeescript](http://coffeescript.org/), for scripting (frontend and backend!);
+* [Jade](http://jade-lang.com/), for templating;
+#### The generator will also ask if you want to include
+* [Metro UI CSS](http://metroui.org.ua/), a great UI;
+OR
+* [Bootstrap](http://getbootstrap.com/), which doesn't need introduction;
+* [FontAwesome](http://fortawesome.github.io/Font-Awesome/), for even more icons;
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+And ask if you'd like to include a top Navbar (currently only works in Metro UI, but can easily be ported to Bootstrap.
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
-```bash
-$ npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
+### Setup
 To install generator-lean-mean from npm, run:
 
 ```bash
@@ -35,11 +41,21 @@ Finally, initiate the generator:
 $ yo lean-mean
 ```
 
-### Getting To Know Yeoman
+### Subgenerators
+#### front-module
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+```bash
+$ yo lean-mean:front-module
+```
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+Creates an Angular view and controller, and optionally adds it to the Navbar.
+
+
+### Cons
+* No unit testing. Sorry. Please add those, if you want to.
+
+### To Do
+Many more subgenerators. This is just a first commit
 
 
 ## License
