@@ -88,6 +88,8 @@ var OnepageGenerator = yeoman.generators.Base.extend({
     }
   },
   runNpm: function(){
+    if (this.options['skip-install'])
+      return;
     var done = this.async();
     console.log("\nRunning NPM Install. Bower is next.\n");
     this.npmInstall("", function(){
@@ -95,6 +97,8 @@ var OnepageGenerator = yeoman.generators.Base.extend({
     });
   },
   runBower: function() {
+    if (this.options['skip-install'])
+      return; 
     var done = this.async();
     console.log("\nRunning Bower:\n");
     this.bowerInstall("", function(){
