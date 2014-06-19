@@ -10,16 +10,19 @@
 After using [generator-angular-fullstack](https://www.npmjs.org/package/generator-angular-fullstack), I searched for a generator that used [Stylus](http://learnboost.github.io/stylus/) and [gulp](http://www.gulpjs.com).
 
 I ended up even preferring the "modular" code organization pattern ([link](https://medium.com/opinionated-angularjs/9f01b594bf06)). I moved some folders around and ended up with a clean generator that uses:
+
 #### The MEAN Stack
 * [MongoDB](http://www.mongodb.org/), leading NoSQL database;
 * [Express](http://expressjs.com/), for backend routing;
 * [AngularJS](https://angularjs.org/), the Superheroic MVW framework for Javascript;
 * [Node](http://nodejs.org/), the backend engine using V8 Javascript engine;
+
 #### Plus these, for personal preferences
 * [gulp](http://www.gulpjs.com) for building;
 * [Stylus](http://learnboost.github.io/stylus/), for styling;
 * [Coffeescript](http://coffeescript.org/), for scripting (frontend and backend!);
 * [Jade](http://jade-lang.com/), for templating;
+
 #### The generator will also ask if you want to include
 * [Metro UI CSS](http://metroui.org.ua/), a great UI;
 OR
