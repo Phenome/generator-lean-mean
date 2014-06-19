@@ -70,21 +70,21 @@ var OnepageGenerator = yeoman.generators.Base.extend({
     this.config.save();
   },
   scaffoldFolders: function () {
-    this.mkdir("frontend");
-    this.mkdir("frontend/modules");
-    this.mkdir("frontend/resources");
-    this.mkdir("frontend/styles");
-    this.mkdir("backend/config");
-    this.mkdir("backend/config/env");
-    this.mkdir("backend/modules");
+    this.mkdir("./frontend");
+    this.mkdir("./frontend/modules");
+    this.mkdir("./frontend/resources");
+    this.mkdir("./frontend/styles");
+    this.mkdir("./backend/config");
+    this.mkdir("./backend/config/env");
+    this.mkdir("./backend/modules");
   },
   copyMainFiles : function() {
     this.config = this.config.getAll();
-    this.directory("default", "/");
+    this.directory("./default", "./");
 
     if (this.config.scaffolds.indexOf('navbar') >= 0) {
-      this.copy("optional/frontend/modules/navbar.coffee","frontend/modules/navbar.coffee");
-      this.copy("optional/frontend/modules/navbar.jade","frontend/modules/navbar.jade");
+      this.copy("./optional/frontend/modules/navbar.coffee","./frontend/modules/navbar.coffee");
+      this.copy("./optional/frontend/modules/navbar.jade","./frontend/modules/navbar.jade");
     }
   },
   runNpm: function(){

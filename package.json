@@ -1,7 +1,7 @@
 {
   "name": "generator-lean-mean",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "version": "0.1.0",
+  "description": "Lean Mean Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "phenome/generator-lean-mean",
