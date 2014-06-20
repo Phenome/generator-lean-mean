@@ -2,30 +2,29 @@
   "name": "<%= _.slugify(config.appName) %>",
   "version": "0.0.0",
   "dependencies": {
-    "connect-livereload":"latest",
-    "lodash":"latest",
-    "express":"latest",
-    "static-favicon":"latest",
-    "cookie-parser":"latest",
-    "errorhandler":"latest",
-    "express-session":"latest",
-    "connect-mongo":"latest",
-    "jade":"latest",
-    "stylus":"latest",
-    "promised-mongo":"latest",
-    "coffee-script":"latest"
+    "static-favicon": "^2.0.0-alpha",
+    "connect-livereload": "^0.4.0",
+    "lodash": "^2.4.1",
+    "cookie-parser": "^1.3.1",
+    "coffee-script": "^1.7.1",
+    "errorhandler": "^1.1.0",
+    "express-session": "^1.5.0",
+    "express": "^4.4.3",
+    "connect-mongo": "^0.4.1",
+    "promised-mongo": "^0.11.1",
+    "jade": "^1.3.1"
   },
-  "devDependencies":{
-    "gulp":"latest",
-    "gulp-filter":"latest",
-    "gulp-uglify":"latest",
-    "gulp-inject":"latest",
-    "gulp-changed":"latest",
-    "gulp-livereload":"latest",
-    "gulp-util":"latest",
-    "gulp-coffee":"latest",
-    "gulp-stylus":"latest",
-    "nib":"latest",
-    "gulp-bower-files":"latest"
+  "devDependencies": {
+    "gulp-bower-files": "^0.2.5",
+    "gulp-inject": "^0.4.1",
+    "gulp-changed": "^0.4.0",
+    "gulp-coffee": "^2.0.1",
+    "gulp-filter": "^0.4.1",
+    "gulp-util": "^2.2.17",
+    "gulp-livereload": "^2.1.0",
+    "gulp-uglify": "^0.3.0",
+    "nib": "^1.0.3",
+    "gulp": "^3.8.1",
+    "gulp-stylus": "^1.0.2"
   }
 }
