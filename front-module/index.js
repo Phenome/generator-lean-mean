@@ -1,4 +1,5 @@
  'use strict';
+var fs = require('fs');
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
@@ -61,7 +62,26 @@ var FrontModuleGenerator = yeoman.generators.NamedBase.extend({
       ",\n    name: \"" + this._.capitalize(this.name) + "\"\n" +
       "    path: \"/" + this.moduleCamelName + "\"\n   " +
       file.substring(index);
-    this.write(path, file);
+    fs.writeFileSync(path,file);
+  },
+  editIndex : function() {
+    var path = "./frontend/index.jade",
+        file = this.readFileAsString(path),
+        index = file.indexOf("//---inject:js---");
+    index = index == -1 ? -1 : file.indexOf("//---inject---", index);
+    if (file.indexOf("script(src='modules/" + this.moduleCamelName + ".js')\n") >= 0) {
+      console.log("No need to edit index...");
+      return;
+    }
+    console.log("Editing Index...");
+    if (index === -1) {
+      console.log("Could NOT edit file! You'll have to edit it manually. Sorry.");
+      return;
+    }
+    file = file.substring(0, index) +
+      "script(src='modules/" + this.moduleCamelName + ".js')\n" +
+      file.substring(index);
+    fs.writeFileSync(path,file);
   },
   end: function() {
     console.log('Created module ' + this.name + '.');

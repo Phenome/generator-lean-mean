@@ -55,7 +55,7 @@ gulp.task 'watch', ['livereload-start'], ->
   livereload.listen()
   gulp.watch ['frontend/**/*.coffee'], ['coffee-and-reload']
   gulp.watch ['frontend/styles/**/*.styl'], ['stylus-and-reload']
-  gulp.watch ['frontend**/*.jade']
+  gulp.watch ['frontend/**/*.jade']
   .on 'change', (file) ->
     livereload.changed file.path
 

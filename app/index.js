@@ -24,7 +24,7 @@ var OnepageGenerator = yeoman.generators.Base.extend({
           name: "MetroUI",
           value: 'metroui',
           disabled: function(answers) {
-            return answers.indexOf('bootstrap') == -1
+            return answers.bootstrap
           },
           checked: true
         },
@@ -32,7 +32,7 @@ var OnepageGenerator = yeoman.generators.Base.extend({
           name: "Bootstrap",
           value: 'bootstrap',
           disabled: function(answers) {
-            return answers.indexOf('metroui') == -1
+            return answers.metroui
           }
         },
 

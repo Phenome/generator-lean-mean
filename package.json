@@ -1,13 +1,13 @@
 {
   "name": "generator-lean-mean",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lean Mean Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "phenome/generator-lean-mean",
   "author": {
-    "name": "",
-    "email": "",
+    "name": "HD Informática Ltda.",
+    "email": "informatica@mpinformatica.com",
     "url": "https://github.com/Phenome"
   },
   "engines": {
