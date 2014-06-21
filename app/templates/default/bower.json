@@ -11,6 +11,7 @@
     "jquery-ui":"latest",
     "jquery-ui": "~1.10.4",
     "metro-ui-css": "olton/Metro-UI-CSS#0eeb4192515439174d3aac3db061167d10c88e55"<% } if (config.css.indexOf('fontawesome') >= 0) { %>,
-    "fontawesome":"~4.1.0"<% } %>
+    "fontawesome":"~4.1.0"<% } if (config.css.indexOf('bootstrap') >= 0) {%>,
+    "bootstrap": "~3.1.1"<% } %>
   }
 }
