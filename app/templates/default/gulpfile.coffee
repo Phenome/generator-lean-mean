@@ -5,36 +5,28 @@ changed = require 'gulp-changed'
 gutil = require 'gulp-util'
 inject = require 'gulp-inject'
 livereload = require 'gulp-livereload'
-bowerFiles = require 'gulp-bower-files'
+bowerFiles = require 'main-bower-files'
 coffee = require 'gulp-coffee'
 stylus = require 'gulp-stylus'
 nib = require 'nib'
 spawn = require('child_process').spawn
 node = null
 
-uglifyFilter = gulpFilter ['**/*.js']
-bowerFilesFilter = gulpFilter ['**/*.js', '**/*.css']
-bowerInjectFilter = gulpFilter ['**/*.min.js', '**/*.css']
-
 gulp.task 'coffee', ->
+  noBowerFilter = gulpFilter ['!bower_components/**/*']
   gulp
   .src ['frontend/**/*.coffee']
-  .pipe changed './.tmp'
-  .pipe coffee(bare:true).on 'error', gutil.log
+  .pipe noBowerFilter
+  .pipe changed './.tmp', extension:'.js'
+  .pipe coffee(bare:true).on 'error', (err)->gutil.log err;@emit 'end'
   .pipe gulp.dest './.tmp'
-
-gulp.task 'coffee-and-reload', ['coffee'], ->
-  livereload.changed('coffee')
 
 gulp.task 'stylus', ->
   gulp
   .src ['frontend/styles/**/*.styl']
   .pipe changed './.tmp'
-  .pipe stylus use:nib(),errors:true
+  .pipe stylus(use:[nib()]).on 'error', (err)->gutil.log "Stylus Error:\n#{err.message}";@emit 'end'
   .pipe gulp.dest './.tmp/styles'
-
-gulp.task 'stylus-and-reload', ['stylus'], ->
-  livereload.changed('style')
 
 gulp.task 'spawn', ->
   node.kill() if node
@@ -52,20 +44,29 @@ gulp.task 'watch-server', ['livereload-start'], ->
     livereload.changed file.path
 
 gulp.task 'watch', ['livereload-start'], ->
-  livereload.listen()
-  gulp.watch ['frontend/**/*.coffee'], ['coffee-and-reload']
-  gulp.watch ['frontend/styles/**/*.styl'], ['stylus-and-reload']
-  gulp.watch ['frontend/**/*.jade']
+  gulp.watch ['frontend/**/*.coffee'], ['coffee']
+  gulp.watch ['frontend/styles/**/*.styl'], ['stylus']
+  gulp.watch ['frontend/**/*.jade', '.tmp/**/*']
   .on 'change', (file) ->
     livereload.changed file.path
 
-gulp.task 'bower-copy', ->
-  bowerFiles()
-  .pipe gulp.dest 'frontend/lib'
+gulp.task 'inject-bower', ->
+  gulp.src bowerFiles()
+  .pipe inject 'frontend/index.jade',
+    starttag:'//---inject:bower:{{ext}}---'
+    endtag:'//---inject---'
+    transform: (filepath, file, index, length) ->
+      filepath = filepath.replace /^.+?\//, '' #removes frontend/, .tmp/
+      ext = filepath.split('.').pop()
+      switch ext
+        when 'css'
+          "link(rel='stylesheet' href='#{filepath}')"
+        when 'js'
+          "script(src='#{filepath}')"
+  .pipe gulp.dest 'frontend'
 
-
-gulp.task 'inject-scripts', ['bower-copy', 'coffee', 'stylus'], ->
-  gulp.src ['frontend/lib/**/*', './.tmp/**/*'], read:false
+gulp.task 'inject-scripts', ['coffee', 'stylus'], ->
+  gulp.src ['./.tmp/**/*'], read:false
   .pipe inject 'frontend/index.jade',
     starttag:'//---inject:{{ext}}---'
     endtag:'//---inject---'
@@ -79,4 +80,4 @@ gulp.task 'inject-scripts', ['bower-copy', 'coffee', 'stylus'], ->
           "script(src='#{filepath}')"
   .pipe gulp.dest 'frontend'
 
-gulp.task 'serve', ['bower-copy', 'inject-scripts', 'spawn', 'watch', 'watch-server'], ->
+gulp.task 'serve', ['inject-bower', 'inject-scripts', 'spawn', 'watch', 'watch-server'], ->

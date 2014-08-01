@@ -1,9 +1,10 @@
 'use strict'
 
+middleware = require './../middleware'
 path = require 'path'
 
 #send Ppartial, or 404
-exports.partials = (req, res) ->
+partials = (req, res) ->
   stripped = req.url.split('.')[0]
   requestedView = path.join './', stripped
   res.render requestedView, (err, html) ->
@@ -14,5 +15,11 @@ exports.partials = (req, res) ->
       res.send html
 
 #send our single page app
-exports.index = (req, res) ->
+index = (req, res) ->
   res.render 'index'
+
+module.exports = (app) ->
+  app.route '/modules/*'
+    .get partials
+  app.route '/*'
+    .get middleware.setUserCookie, index

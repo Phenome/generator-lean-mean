@@ -1,12 +1,12 @@
 'use strict'
 
-index = require './modules'
-middleware = require './middleware'
-###---require modules---###
-###---require modules---###
+path = require 'path'
+fs = require 'fs'
 
 module.exports = (app) ->
-  app.route '/modules/*'
-    .get index.partials
-  app.route '/*'
-    .get middleware.setUserCookie, index.index
+  fs.readdir "#{__dirname}/modules", (err, files) ->
+    if err then return
+    for file in files
+      continue if file.search(/\.coffee$/) is -1 or file is 'index.coffee'
+      require(path.resolve "#{__dirname}/modules/#{file}") app
+    require(path.resolve "#{__dirname}/modules/index.coffee") app
