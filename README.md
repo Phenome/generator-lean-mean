@@ -63,4 +63,4 @@ Many more subgenerators. This is just a first commit
 
 ## License
 
-MIT
+GPL
