@@ -7,7 +7,7 @@ html
     //---inject---
     //---inject:css---
     //---inject---
-  body<% if (config.css.indexOf('metroui') >= 0) { %>.metro<% } %>(ng-app="<%= config.appName %>App")
+  body<% if (config.css.indexOf('metroui') >= 0) { %>.metro<% } %>(ng-app="<%= _.camelize(config.appName) %>App")
     <% if (config.scaffolds.indexOf('navbar') >= 0) { %>
     div(ng-include='\'modules/navbar\'')
     <% } %>div(ng-view)

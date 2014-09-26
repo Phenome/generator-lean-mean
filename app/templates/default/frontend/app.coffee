@@ -7,7 +7,7 @@ angular.module('<%= _.camelize(config.appName) %>App', [
   'ngRoute',
   'ngAnimate'
 ])
-  .config ($routeProvider, $locationProvider, $httpProvider) ->
+  .config ($routeProvider, $locationProvider, $httpProvider, $provide) ->
     $routeProvider
       .when '/',
         templateUrl: 'modules/main'
@@ -16,3 +16,7 @@ angular.module('<%= _.camelize(config.appName) %>App', [
         redirectTo: '/'
 
     $locationProvider.html5Mode true
+    $provide.provider 'api', jelbourn.ApiProvider
+  .config (apiProvider) ->
+    #---begin:endpoints---#
+    #---end:endpoints---#

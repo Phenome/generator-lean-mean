@@ -1,5 +1,4 @@
 gulp = require 'gulp'
-gulpFilter = require 'gulp-filter'
 p = require('gulp-load-plugins')() # loading gulp plugins lazily
 bowerFiles = require 'main-bower-files'
 nib = require 'nib'
