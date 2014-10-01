@@ -83,8 +83,7 @@ class jelbourn.ApiEndpoint
   # @return {angular.$q.Promise} A promise resolved when the http request has
   #   a response.
   request : (action, params, data) ->
-    @resource[action] params,data
-      .$promise
+    @resource[action](params,data,->).$promise
   # Perform an HTTP GET request and performs a post-response transformation
   # on the data as defined in the model object.
   # 
@@ -108,9 +107,12 @@ class jelbourn.ApiEndpoint
   # @param {Object=} data The request data (for PUT / POST requests).
   # @return {angular.$q.Promise} A promise resolved when the http request has
   #   a response.
-  saveRequestWithModel = (action, params, data) ->
+  saveRequestWithModel : (action, params, data) ->
+    if not data
+      data = params
+      params = {}
     model = angular.copy data
-    model.beforeSave() if model and model.beforeSave
+    model?.beforeSave?()
     @request action, params, model
 
 # Angular provider for configuring and instantiating as api service.

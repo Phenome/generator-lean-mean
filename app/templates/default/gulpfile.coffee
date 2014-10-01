@@ -2,21 +2,62 @@ gulp = require 'gulp'
 p = require('gulp-load-plugins')() # loading gulp plugins lazily
 bowerFiles = require 'main-bower-files'
 nib = require 'nib'
+es = require 'event-stream'
 spawn = require('child_process').spawn
 node = null
 
+gulp.task 'build', ['coffee', 'stylus'], ->
+  jsFilter = p.filter ['*.js']
+  cssFilter = p.filter ['*.css']
+  extraFilter = p.filter ['!*.js', '!*.css', '!*.coffee']
+  es.concat(
+      gulp
+      .src './.tmp/**/*.js'
+      .pipe p.concat 'scripts.js'
+      .pipe p.uglify(mangle:false).on 'error', (err)->p.util.log err;@emit 'end'
+      .pipe gulp.dest './build/frontend/js/'
+    ,
+      gulp.src bowerFiles()
+      .pipe jsFilter
+      .pipe p.concat 'bower.js'
+      .pipe p.uglify mangle:true
+      .pipe gulp.dest './build/frontend/js/'
+    ,
+      gulp.src bowerFiles()
+      .pipe extraFilter
+      .pipe gulp.dest './build/frontend/fonts/'
+    ,
+      gulp.src bowerFiles()
+      .pipe cssFilter
+      .pipe p.concat 'bower.css'
+      .pipe p.minifyCss().on 'error', (err)->p.util.log err;@emit 'end'
+      .pipe gulp.dest './build/frontend/css/'
+    ,
+      gulp.src './.tmp/**/*.css'
+      .pipe p.concat 'style.css'
+      .pipe p.minifyCss().on 'error', (err)->p.util.log err;@emit 'end'
+      .pipe gulp.dest './build/frontend/css/'
+    ,
+      gulp.src ['./frontend/**/*.jade', './frontend/resources/*']
+      .pipe gulp.dest './build/frontend/'
+    ,
+      gulp.src ['./server.*']
+      .pipe gulp.dest './build/'
+    ,
+      gulp.src ['./backend/**/*.coffee']
+      .pipe gulp.dest './build/backend/'
+  ) 
+
 gulp.task 'coffee', ->
-  noBowerFilter = gulpFilter ['!bower_components/**/*']
   gulp
-  .src ['frontend/**/*.coffee']
-  .pipe noBowerFilter
+  .src ['frontend/**/*.coffee','!frontend/bower_components/**/*']
   .pipe p.changed './.tmp', extension:'.js'
   .pipe p.coffee(bare:true).on 'error', (err)->p.util.log err;@emit 'end'
   .pipe gulp.dest './.tmp'
 
 gulp.task 'stylus', ->
   gulp
-  .src ['frontend/styles/**/*.styl']
+  .src ['frontend/styles/**/*.styl','!frontend/bower_components/**/*']
   .pipe p.changed './.tmp'
   .pipe p.stylus(use:[nib()]).on 'error', (err)->p.util.log "Stylus Error:\n#{err.message}";@emit 'end'
   .pipe gulp.dest './.tmp/styles'

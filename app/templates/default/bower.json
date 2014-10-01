@@ -12,5 +12,13 @@
     "Metro-UI-CSS": "olton/metro-ui-css#ad2a388d8e7dd7083b3decc5c11297d8b4ed684b"<% } if (config.css.indexOf('fontawesome') >= 0) { %>,
     "fontawesome":"~4.1.0"<% } if (config.css.indexOf('bootstrap') >= 0) {%>,
     "bootstrap": "~3.1.1"<% } %>
-  }
+  }<% if (config.css.indexOf('metroui') >= 0) { %>,
+  "overrides": {
+    "fontawesome": {
+      "main": [
+        "css/font-awesome.css",
+        "fonts/*"
+      ]
+    }
+  }<% } %>
 }
