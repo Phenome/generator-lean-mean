@@ -7,7 +7,7 @@ spawn = require('child_process').spawn
 node = null
 
 gulp.task 'coffee', ->
-  noBowerFilter = gulpFilter ['!bower_components/**/*']
+  noBowerFilter = gulpFilter ['!frontend/bower_components/**/*']
   gulp
   .src ['frontend/**/*.coffee']
   .pipe noBowerFilter
