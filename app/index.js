@@ -18,36 +18,16 @@ var OnepageGenerator = yeoman.generators.Base.extend({
     }, {
       name:"css",
       message:"Choose CSSs to add",
-      type:"checkbox",
-      choices: [
-        {
-          name: "MetroUI",
-          value: 'metroui',
-          disabled: function(answers) {
-            return answers.bootstrap
-          },
-          checked: true
-        },
-        {
-          name: "Bootstrap",
-          value: 'bootstrap',
-          disabled: function(answers) {
-            return answers.metroui
-          }
-        },
-
-        {
-          name: "FontAwesome",
-          value: 'fontawesome',
-          checked: true
-        }
-      ],
-      validate: function(answer) {
-        if (answer.indexOf('metroui') >= 0 && answer.indexOf('bootstrap') >= 0)
-          return "Sorry. Choose either MetroUI or Bootstrap. You can't pick both.";
-        return true;
+      type:"list",
+      choices: ['MetroUI', 'Bootstrap', 'AngularMaterial']
+    },{
+      name:"fontawesome",
+      message:"Would you like to use FontAwesome?",
+      type:"confirm",
+      filter: function (val) {
+        return val;
       }
-    }, {
+    },{
       name:"scaffolds",
       message:"Jumpstart with these elements",
       type:"checkbox",
@@ -61,7 +41,8 @@ var OnepageGenerator = yeoman.generators.Base.extend({
       this.config.set({
         appName:this.appName,
         scaffolds:props.scaffolds,
-        css:props.css
+        css:props.css,
+        fontawesome:props.fontawesome
       });
       done();
     }.bind(this));
@@ -72,6 +53,9 @@ var OnepageGenerator = yeoman.generators.Base.extend({
   scaffoldFolders: function () {
     this.mkdir("./frontend");
     this.mkdir("./frontend/modules");
+    this.mkdir("./frontend/directives");
+    this.mkdir("./frontend/services");
+    this.mkdir("./frontend/lib");
     this.mkdir("./frontend/resources");
     this.mkdir("./frontend/styles");
     this.mkdir("./backend/config");

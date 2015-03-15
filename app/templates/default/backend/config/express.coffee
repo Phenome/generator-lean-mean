@@ -4,9 +4,7 @@ favicon = require 'static-favicon'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 errorHandler = require 'errorhandler'
-session = require 'express-session'
 config = require './config'
-mongoStore = require('connect-mongo') session
 
 
 module.exports = (app) ->
@@ -25,10 +23,6 @@ module.exports = (app) ->
         res.header 'Expires', 0
       next()
 
-  sessionStore = new mongoStore
-    url: config.mongo.uri
-    collection: 'sessions'
-
   app
   .use express.static path.join config.root, '.tmp'
   .use express.static path.join config.root, 'frontend'
@@ -37,8 +31,3 @@ module.exports = (app) ->
   .use cookieParser()
   .use bodyParser.urlencoded extended: false
   .use bodyParser.json()
-  .use session
-    saveUninitialized:true
-    resave:true
-    secret: 'my-little-secret'
-    store: sessionStore

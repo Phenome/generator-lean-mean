@@ -5,7 +5,8 @@ angular.module('<%= _.camelize(config.appName) %>App', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ngAnimate'
+  'ngAnimate',<% if (config.css === 'AngularMaterial') { %> 
+  'ngMaterial' <% } %>
 ])
   .config ($routeProvider, $locationProvider, $httpProvider) ->
     $routeProvider

@@ -1,10 +1,10 @@
-<% if (config.css.indexOf('metroui') >= 0) { %>
+<% if (config.css === 'MetroUI') { %>
 nav.navigation-bar.light(ng-controller='NavbarCtrl')
   nav.navigation-bar-content
     item.element.brand <%= _.capitalize(config.appName) %>
     item.element-divider
-    a.element(ng-repeat="module in modules", ng-href="{{module.path}}", ng-class="{active:isActive(module.path)}") {{module.name}}
-<% } else { %>
+    a.element(ng-repeat="module in modules" ng-href="{{module.path}}" ng-class="{active:isActive(module.path)}") {{module.name}}
+<% } else if (config.css === 'Bootstrap') { %>
 nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl')
   .container-fluid
     .navbar-header
@@ -13,4 +13,9 @@ nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl')
       ul.nav.navbar-nav
         li(ng-repeat="module in modules" ng-class="{active:isActive(module.path)}")
           a(ng-href="{{module.path}}") {{module.name}}
+<% } else if (config.css === 'AngularMaterial') { %>
+md-toolbar(ng-controller="NavbarCtrl")
+  .md-toolbar-tools
+    h2.appTitle Leanmean
+    a.button(ng-repeat="module in modules" ng-href="{{module.path}}" ng-class="{active: isActive(module.path)}") {{module.name}}
 <% } %>
