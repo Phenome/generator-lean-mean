@@ -59,8 +59,8 @@ var FrontModuleGenerator = yeoman.generators.NamedBase.extend({
       return;
     }
     file = file.substring(0, index) +
-      ",\n    name: \"" + this._.capitalize(this.name) + "\"\n" +
-      "    path: \"/" + this.moduleCamelName + "\"\n   " +
+      ",\n      name: \"" + this._.capitalize(this.name) + "\"\n" +
+      "      path: \"/" + this.moduleCamelName + "\"\n    " +
       file.substring(index);
     fs.writeFileSync(path,file);
   },

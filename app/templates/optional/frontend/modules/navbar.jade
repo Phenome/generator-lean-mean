@@ -1,21 +1,18 @@
-<% if (config.css === 'MetroUI') { %>
-nav.navigation-bar.light(ng-controller='NavbarCtrl')
+<% if (config.css === 'MetroUI') { %>nav.navigation-bar.light(ng-controller='NavbarController as ctrl')
   nav.navigation-bar-content
     item.element.brand <%= _.capitalize(config.appName) %>
     item.element-divider
-    a.element(ng-repeat="module in modules" ng-href="{{module.path}}" ng-class="{active:isActive(module.path)}") {{module.name}}
-<% } else if (config.css === 'Bootstrap') { %>
-nav.navbar.navbar-default(role="navigation" ng-controller='NavbarCtrl')
+    a.element(ng-repeat="module in ctrl.modules" ng-href="{{module.path}}" ng-class="{active:ctrl.isActive(module.path)}") {{module.name}}
+<% } else if (config.css === 'Bootstrap') { %>nav.navbar.navbar-default(role="navigation" ng-controller='NavbarController as ctrl')
   .container-fluid
     .navbar-header
       a.navbar-brand(href="/") <%= _.capitalize(config.appName) %>
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(ng-repeat="module in modules" ng-class="{active:isActive(module.path)}")
+        li(ng-repeat="module in ctrl.modules" ng-class="{active:ctrl.isActive(module.path)}")
           a(ng-href="{{module.path}}") {{module.name}}
-<% } else if (config.css === 'AngularMaterial') { %>
-md-toolbar(ng-controller="NavbarCtrl")
+<% } else if (config.css === 'AngularMaterial') { %>md-toolbar(ng-controller="NavbarController as ctrl")
   .md-toolbar-tools
     h2.appTitle Leanmean
-    a.button(ng-repeat="module in modules" ng-href="{{module.path}}" ng-class="{active: isActive(module.path)}") {{module.name}}
+    a.button(ng-repeat="module in ctrl.modules" ng-href="{{module.path}}" ng-class="{active: ctrl.isActive(module.path)}") {{module.name}}
 <% } %>

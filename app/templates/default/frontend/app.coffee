@@ -8,12 +8,5 @@ angular.module('<%= _.camelize(config.appName) %>App', [
   'ngAnimate',<% if (config.css === 'AngularMaterial') { %> 
   'ngMaterial' <% } %>
 ])
-  .config ($routeProvider, $locationProvider, $httpProvider) ->
-    $routeProvider
-      .when '/',
-        templateUrl: 'modules/main'
-        controller: 'MainCtrl'
-      .otherwise
-        redirectTo: '/'
-
+  .config ($locationProvider) ->
     $locationProvider.html5Mode true
