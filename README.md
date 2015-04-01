@@ -27,6 +27,8 @@ I ended up even preferring the "modular" code organization pattern ([link](https
 * [Metro UI CSS](http://metroui.org.ua/), a great UI;
 OR
 * [Bootstrap](http://getbootstrap.com/), which doesn't need introduction;
+OR
+* [Angular Material](https://material.angularjs.org/#/), A great UI material design library for AngularJs
 * [FontAwesome](http://fortawesome.github.io/Font-Awesome/), for even more icons;
 
 And ask if you'd like to include a top Navbar (currently only works in Metro UI, but can easily be ported to Bootstrap).
