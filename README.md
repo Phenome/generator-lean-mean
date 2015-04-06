@@ -31,7 +31,7 @@ OR
 * [Angular Material](https://material.angularjs.org/#/), A great UI material design library for AngularJs
 * [FontAwesome](http://fortawesome.github.io/Font-Awesome/), for even more icons;
 
-And ask if you'd like to include a top Navbar (currently only works in Metro UI, but can easily be ported to Bootstrap).
+And ask if you'd like to include a top Navbar
 
 ### Setup
 To install generator-lean-mean from npm, run:
