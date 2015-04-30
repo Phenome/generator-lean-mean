@@ -1,7 +1,7 @@
 'use strict'
 
 class <%= moduleName %>Controller
-  contructor: ->
+  constructor: ->
 
 angular.module('<%= _.camelize(appName) %>App')
 .config ($routeProvider) ->
