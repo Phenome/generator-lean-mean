@@ -4,6 +4,7 @@ bowerFiles = require 'main-bower-files'
 nib = require 'nib'
 es = require 'event-stream'
 spawn = require('child_process').spawn
+karma = require('karma').server
 node = null
 
 gulp.task 'build', ['coffee', 'stylus'], ->
@@ -46,11 +47,11 @@ gulp.task 'build', ['coffee', 'stylus'], ->
     ,
       gulp.src ['./backend/**/*.coffee']
       .pipe gulp.dest './build/backend/'
-  ) 
+  )
 
 gulp.task 'coffee', ->
   gulp
-  .src ['frontend/**/*.coffee','!frontend/bower_components/**/*']
+  .src ['frontend/**/*.coffee', '!frontend/**/*.spec.coffee', '!frontend/bower_components/**/*']
   .pipe p.changed './.tmp', extension:'.js'
   .pipe p.coffee(bare:true).on 'error', (err)->p.util.log err;@emit 'end'
   .pipe gulp.dest './.tmp'
@@ -138,3 +139,9 @@ gulp.task 'inject-scripts', ['coffee', 'stylus', 'inject-bower', 'inject-libs'],
   .pipe gulp.dest 'frontend'
 
 gulp.task 'serve', ['inject-scripts', 'coffee-backend', 'spawn', 'watch', 'watch-server'], ->
+
+gulp.task 'test', (done) ->
+  karma.start
+    configFile: "#{__dirname}/karma.conf.js"
+    singleRun: true
+  , done
