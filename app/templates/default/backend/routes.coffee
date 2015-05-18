@@ -9,4 +9,4 @@ module.exports = (app) ->
     for file in files
       continue if file.search(/\.coffee$/) is -1 or file is 'index.coffee'
       require(path.resolve "#{__dirname}/modules/#{file}") app
-    require(path.resolve "#{__dirname}/modules/index.coffee") app
+    require(path.resolve "#{__dirname}/index.coffee") app

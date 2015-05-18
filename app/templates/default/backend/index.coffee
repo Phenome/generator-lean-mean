@@ -1,6 +1,6 @@
 'use strict'
 
-middleware = require './../middleware'
+middleware = require './middleware'
 path = require 'path'
 
 #send Ppartial, or 404
