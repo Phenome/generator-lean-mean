@@ -2,6 +2,7 @@
 
 class <%= moduleName %>Controller
   constructor: ->
+    @name = <%= moduleName %>
 
 angular.module('<%= _.camelize(appName) %>App')
 .config ($routeProvider) ->

@@ -68,6 +68,7 @@ var OnepageGenerator = yeoman.generators.Base.extend({
 
     if (this.config.scaffolds.indexOf('navbar') >= 0) {
       this.copy("./optional/frontend/modules/navbar.coffee","./frontend/modules/navbar.coffee");
+      this.copy("./optional/frontend/modules/navbar.spec.coffee","./frontend/modules/navbar.spec.coffee");
       this.copy("./optional/frontend/modules/navbar.jade","./frontend/modules/navbar.jade");
     }
   },
