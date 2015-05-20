@@ -1,2 +1,23 @@
-h1 Main
-p This is the Main view.
+<% if (config.css === 'AngularMaterial') { %>
+div(layout="row" layout-align="center center")
+  md-card(ng-repeat="thing in ctrl.things")
+    md-card-content
+      h2.md-title {{thing.name}}
+      p {{thing.info}}
+<% } else if (config.css === 'Bootstrap') { %>
+.container
+  .list-group
+    a.list-group-item(href="#" ng-repeat="thing in ctrl.things")
+      h4.list-group-item-heading {{thing.name}}
+      p.list-group-item-text {{thing.info}}
+<% } else if (config.css === 'MetroUI') { %>
+.margin30
+  .grid
+    .row.cells3
+      .cell(ng-repeat="thing in ctrl.things")
+        .panel
+          .heading
+            .title {{thing.name}}
+          .content
+            p {{thing.info}}
+<% } %>
