@@ -56,11 +56,14 @@ $ yo lean-mean:front-module
 Creates an Angular view and controller, and optionally adds it to the Navbar.
 
 
-### Cons
-* No unit testing. Sorry. Please add those, if you want to.
+### Testing
+```bash
+$ gulp test:frontend
+```
 
 ### To Do
-Many more subgenerators. This is just a first commit
+backend testing task.
+Many more subgenerators.
 
 
 ## License
