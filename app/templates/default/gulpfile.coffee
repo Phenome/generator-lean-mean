@@ -140,7 +140,7 @@ gulp.task 'inject-scripts', ['coffee', 'stylus', 'inject-bower', 'inject-libs'],
 
 gulp.task 'serve', ['inject-scripts', 'coffee-backend', 'spawn', 'watch', 'watch-server'], ->
 
-gulp.task 'test', (done) ->
+gulp.task 'test:frontend', (done) ->
   karma.start
     configFile: "#{__dirname}/karma.conf.js"
     singleRun: true
