@@ -1,8 +1,9 @@
-<% if (config.css === 'MetroUI') { %>nav.navigation-bar.light(ng-controller='NavbarController as ctrl')
-  nav.navigation-bar-content
-    item.element.brand <%= _.capitalize(config.appName) %>
-    item.element-divider
-    a.element(ng-repeat="module in ctrl.modules" ng-href="{{module.path}}" ng-class="{active:ctrl.isActive(module.path)}") {{module.name}}
+<% if (config.css === 'MetroUI') { %>.app-bar(ng-controller='NavbarController as ctrl')
+  .app-bar-element <%= _.capitalize(config.appName) %>
+  span.app-bar-divider
+  ul.app-bar-menu
+    li(ng-repeat="module in ctrl.modules" ng-class="{active:ctrl.isActive(module.path)}")
+      a(ng-href="{{module.path}}") {{module.name}}
 <% } else if (config.css === 'Bootstrap') { %>nav.navbar.navbar-default(role="navigation" ng-controller='NavbarController as ctrl')
   .container-fluid
     .navbar-header

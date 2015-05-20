@@ -1,8 +1,12 @@
 @import 'nib'
-<% if (config.css === 'MetroUI' && config.scaffolds.indexOf('navbar') >= 0) { %>.navigation-bar-content
-  .element
-    &.active
-      border-bottom 3px solid rgba(80,80,80,0.8)<% } else if (config.css === 'AngularMaterial' && config.scaffolds.indexOf('navbar') >= 0) { %>
+<% if (config.css === 'MetroUI' && config.scaffolds.indexOf('navbar') >= 0) { %>.app-bar
+  ul.app-bar-menu
+    li
+      a
+        &:hover
+          background-color rgba(0,0,0,0)
+      &.active
+        border-bottom 3px solid #00CCFF<% } else if (config.css === 'AngularMaterial' && config.scaffolds.indexOf('navbar') >= 0) { %>
 .md-toolbar-tools
   .appTitle
     padding-right 20px
