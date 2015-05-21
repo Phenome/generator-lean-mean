@@ -33,7 +33,7 @@ describe('lean-mean generator', function () {
       'backend/config/env/all.coffee',
       'backend/config/env/development.coffee',
       'backend/config/env/production.coffee',
-      'backend/modules/index.coffee',
+      'backend/index.coffee',
       'frontend/app.coffee',
       'frontend/index.jade',
       'frontend/modules/main.coffee',
