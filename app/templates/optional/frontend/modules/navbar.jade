@@ -14,6 +14,6 @@
           a(ng-href="{{module.path}}") {{module.name}}
 <% } else if (config.css === 'AngularMaterial') { %>md-toolbar(ng-controller="NavbarController as ctrl")
   .md-toolbar-tools
-    h2.appTitle Leanmean
+    h2.appTitle <%= _.capitalize(config.appName) %>
     a.button(ng-repeat="module in ctrl.modules" ng-href="{{module.path}}" ng-class="{active: ctrl.isActive(module.path)}") {{module.name}}
 <% } %>
