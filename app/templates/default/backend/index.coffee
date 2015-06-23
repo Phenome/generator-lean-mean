@@ -3,7 +3,7 @@
 middleware = require './middleware'
 path = require 'path'
 
-#send Ppartial, or 404
+#send partial, or 404
 partials = (req, res) ->
   stripped = req.url.split('.')[0]
   requestedView = path.join './', stripped
