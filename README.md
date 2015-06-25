@@ -28,8 +28,9 @@ I ended up even preferring the "modular" code organization pattern ([link](https
 OR
 * [Bootstrap](http://getbootstrap.com/), which doesn't need introduction;
 OR
-* [Angular Material](https://material.angularjs.org/#/), A great UI material design library for AngularJs
+* [Angular Material](https://material.angularjs.org/#/), A great UI material design library for AngularJs;
 * [FontAwesome](http://fortawesome.github.io/Font-Awesome/), for even more icons;
+* [MongooseJS](http://mongoosejs.com/), elegant mongodb object modeling for node.js;
 
 And ask if you'd like to include a top Navbar
 
@@ -62,8 +63,8 @@ $ gulp test:frontend
 ```
 
 ### To Do
-backend testing task.
-Many more subgenerators.
+* backend testing task;
+* Many more subgenerators;
 
 
 ## License
