@@ -34,6 +34,8 @@ describe('lean-mean generator', function () {
       'backend/config/env/development.coffee',
       'backend/config/env/production.coffee',
       'backend/index.coffee',
+      'backend/modules/thing.coffee',
+      'backend/modules/thing.model.coffee',
       'frontend/app.coffee',
       'frontend/index.jade',
       'frontend/modules/main.coffee',
@@ -45,8 +47,10 @@ describe('lean-mean generator', function () {
 
     helpers.mockPrompt(this.app, {
       'appName': 'test',
-      'css':['metroui','fontawesome'],
-      'scaffolds':['navbar']
+      'css': ['AngularMaterial'],
+      'fontawesome': true,
+      'scaffolds': ['navbar'],
+      'mongoose': true
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {
