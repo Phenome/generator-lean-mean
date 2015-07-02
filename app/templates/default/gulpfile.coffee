@@ -53,7 +53,7 @@ gulp.task 'coffee', ->
   gulp
   .src ['frontend/**/*.coffee', '!frontend/**/*.spec.coffee', '!frontend/bower_components/**/*']
   .pipe p.changed './.tmp', extension:'.js'
-  .pipe p.coffee(bare:true).on 'error', (err)->p.util.log err;@emit 'end'
+  .pipe p.coffee().on 'error', (err)->p.util.log err;@emit 'end'
   .pipe gulp.dest './.tmp'
 
 gulp.task 'coffee-backend', ->
@@ -108,22 +108,7 @@ gulp.task 'inject-bower', ->
           "script(src='#{filepath}')"
   .pipe gulp.dest 'frontend'
 
-gulp.task 'inject-libs', ['coffee'], ->
-  gulp.src './.tmp/lib/**/*', read:false
-  .pipe p.inject 'frontend/index.jade',
-    starttag:'//---inject:lib:{{ext}}---'
-    endtag:'//---inject---'
-    transform: (filepath, file, index, length) ->
-      filepath = filepath.replace /^.+?\//, '' #removes frontend/, .tmp/
-      ext = filepath.split('.').pop()
-      switch ext
-        when 'css'
-          "link(rel='stylesheet' href='#{filepath}')"
-        when 'js'
-          "script(src='#{filepath}')"
-  .pipe gulp.dest 'frontend'
-
-gulp.task 'inject-scripts', ['coffee', 'stylus', 'inject-bower', 'inject-libs'], ->
+gulp.task 'inject-scripts', ['coffee', 'stylus', 'inject-bower'], ->
   gulp.src ['./.tmp/**/*', '!./.tmp/backend/**/*', '!./.tmp/lib/**'], read:false
   .pipe p.inject 'frontend/index.jade',
     starttag:'//---inject:{{ext}}---'

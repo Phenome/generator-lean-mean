@@ -63,7 +63,6 @@ var OnepageGenerator = yeoman.generators.Base.extend({
     this.mkdir('./frontend/modules');
     this.mkdir('./frontend/directives');
     this.mkdir('./frontend/services');
-    this.mkdir('./frontend/lib');
     this.mkdir('./frontend/resources');
     this.mkdir('./frontend/styles');
     this.mkdir('./backend/config');
